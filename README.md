@@ -1,6 +1,6 @@
 # JWMarket
 
-JWMarket is an advanced, fully-featured **Auction House and Black Market** plugin for Minecraft Bedrock (Endstone API). It relies on [JWEconomy](https://github.com/your-repo/jweconomy) to handle transactions, providing a safe, automated, and highly interactive player-driven economy.
+JWMarket is an advanced, fully-featured **Auction House and Black Market** plugin for Minecraft Bedrock (Endstone API). It relies on [JWEconomy](https://github.com/junggamyeon/JWEconomy) to handle transactions, providing a safe, automated, and highly interactive player-driven economy.
 
 What makes JWMarket stand out is its **native UI Forms**, **Buy Orders Escrow system**, and **Perfect NBT Serialization**, allowing players to trade heavily enchanted, named, and modified items without fear of data loss.
 
