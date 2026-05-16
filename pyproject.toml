@@ -12,8 +12,12 @@ authors = [{ name = "JWDev" }]
 requires-python = ">=3.12"
 dependencies = [
     "endstone>=0.10.0",
-    "aiosqlite>=0.20.0"
+    "aiosqlite>=0.20.0",
+    "endstone-jweconomy @ git+https://github.com/junggamyeon/JWEconomy.git"
 ]
+
+[tool.hatch.metadata]
+allow-direct-references = true
 
 [project.entry-points."endstone"]
 jwmarket = "endstone_jwmarket:JWMarket"
