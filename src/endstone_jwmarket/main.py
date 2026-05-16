@@ -5,7 +5,7 @@ from __future__ import annotations
 import asyncio
 import os
 import threading
-from typing import TYPE_CHECKING, Any
+from typing import TYPE_CHECKING, Any, cast
 
 from endstone.plugin import Plugin
 from endstone.command import Command, CommandSender
@@ -87,7 +87,7 @@ class JWMarket(Plugin):
             self.server.plugin_manager.disable_plugin(self)
             return
         
-        self._economy_api = eco_plugin.economy_api
+        self._economy_api = getattr(eco_plugin, "economy_api")
 
         future = self.run_async(self._initialize_database())
         try:
