@@ -1,0 +1,5 @@
+.venv
+bedrock_server
+**__pycache__
+**.egg-info
+dist/*

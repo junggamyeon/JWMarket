@@ -1,22 +1,26 @@
 [build-system]
-requires = ["setuptools>=61.0", "wheel"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [project]
 name = "endstone-jwmarket"
-version = "1.0.0"
+version = "1.0.1"
 description = "Modern auction house and market system for EndstoneMC with SQLite backend"
 readme = "README.md"
 license = "MIT"
 authors = [{ name = "JWDev" }]
 requires-python = ">=3.12"
-dependencies = ["endstone>=0.10.0", "aiosqlite>=0.20.0", "pyyaml>=6.0"]
+dependencies = [
+    "endstone>=0.10.0",
+    "aiosqlite>=0.20.0",
+    "endstone-jweconomy @ git+https://github.com/junggamyeon/JWEconomy.git"
+]
+
+[tool.hatch.metadata]
+allow-direct-references = true
 
 [project.entry-points."endstone"]
-jwmarket = "jwmarket.main:JWMarket"
+jwmarket = "endstone_jwmarket:JWMarket"
 
-[tool.setuptools.packages.find]
-where = ["src"]
-
-[tool.setuptools.package-data]
-jwmarket = ["resources/*.yml"]
+[tool.hatch.build.targets.wheel]
+packages = ["src/endstone_jwmarket"]
