@@ -11,6 +11,7 @@ if TYPE_CHECKING:
     from endstone_jwmarket.database.repositories import AuctionRepository, ClaimsRepository
     from endstone_jwmarket.cache import ListingCache
     from endstone_jwmarket.util import ItemSerializer
+    from endstone_jwmarket.database.repositories.auction_repository import AuctionRecord
 
 
 @dataclass(frozen=True, slots=True)
@@ -174,3 +175,6 @@ class AuctionService:
 
     async def get_active_count(self) -> int:
         return await self._auction_repo.get_active_count()
+
+    async def get_seller_active_listings(self, seller_uuid: str) -> list[AuctionRecord]:
+        return await self._auction_repo.get_listings_by_seller(seller_uuid, status="ACTIVE")

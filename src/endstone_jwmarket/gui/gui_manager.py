@@ -146,7 +146,7 @@ class GuiManager:
                             "listing_unavailable": self._plugin.message_formatter.format("gui_listing_unavailable"),
                             "insufficient_funds": self._plugin.message_formatter.format("ah_insufficient_funds"),
                         }
-                        player.send_message(error_map.get(result.error, self._plugin.message_formatter.format("error_generic")))
+                        player.send_message(error_map.get(result.error or "", self._plugin.message_formatter.format("error_generic")))
                         return
 
                     try:
@@ -232,7 +232,7 @@ class GuiManager:
         player_uuid = str(player.unique_id)
         async def task():
             try:
-                listings = await self._plugin.auction_service._auction_repo.get_seller_listings(player_uuid, "ACTIVE")
+                listings = await self._plugin.auction_service.get_seller_active_listings(player_uuid)
                 def callback():
                     sym = self._plugin.economy_api.currency_symbol
                     form = ActionForm(title=self._plugin.message_formatter.format("gui_my_listings_title"), content=self._plugin.message_formatter.format("gui_my_listings_content", count=len(listings)))

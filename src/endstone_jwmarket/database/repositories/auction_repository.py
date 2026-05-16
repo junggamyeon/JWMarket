@@ -160,3 +160,12 @@ class AuctionRepository:
             item_amount=row["item_amount"], price=row["price"], category=row["category"],
             status=row["status"], created_at=row["created_at"], expires_at=row["expires_at"]
         )
+
+    async def get_listings_by_seller(self, seller_uuid: str, status: str = "ACTIVE") -> list[AuctionRecord]:
+        query = """
+            SELECT * FROM auctions
+            WHERE seller_uuid = ? AND status = ?
+            ORDER BY created_at DESC
+        """
+        rows = await self._db.fetchall(query, (seller_uuid, status))
+        return [self._map_row(r) for r in rows]
