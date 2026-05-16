@@ -8,7 +8,7 @@ from typing import TYPE_CHECKING, Any
 if TYPE_CHECKING:
     from endstone import Logger
     from jweconomy.api.economy_api import EconomyAPI
-    from jwmarket.database.repositories.order_repository import OrderRepository
+    from endstone_jwmarket.database.repositories import OrderRepository
 
 
 @dataclass(frozen=True, slots=True)
@@ -65,7 +65,7 @@ class OrderService:
         if remove_result is None:
             return OrderCreateResult(success=False, error="insufficient_funds")
 
-        from jwmarket.util.item_serializer import ItemSerializer
+        from endstone_jwmarket.util import ItemSerializer
         serializer = ItemSerializer()
         item_display = serializer.get_display_name(item_type)
 

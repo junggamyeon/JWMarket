@@ -8,7 +8,7 @@ from endstone import Player
 from endstone.command import CommandSender
 
 if TYPE_CHECKING:
-    from jwmarket.main import JWMarket
+    from endstone_jwmarket.main import JWMarket
 
 
 class AuctionHouseCommandHandler:

@@ -6,8 +6,8 @@ from typing import TYPE_CHECKING, Any
 
 if TYPE_CHECKING:
     from endstone import Logger
-    from jwmarket.database.repositories.auction_repository import AuctionRepository
-    from jwmarket.cache.search_cache import SearchCache
+    from endstone_jwmarket.database.repositories import AuctionRepository
+    from endstone_jwmarket.cache import SearchCache
 
 
 class SearchService:

@@ -6,7 +6,7 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from endstone import Logger
-    from jwmarket.database.database_manager import DatabaseManager
+    from endstone_jwmarket.database import DatabaseManager
 
 
 class SchemaManager:

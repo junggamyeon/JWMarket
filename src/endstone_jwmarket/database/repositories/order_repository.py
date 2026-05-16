@@ -5,7 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Any
 
-from jwmarket.database.database_manager import DatabaseManager
+from endstone_jwmarket.database import DatabaseManager
 
 
 @dataclass(frozen=True, slots=True)

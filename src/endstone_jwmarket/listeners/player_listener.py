@@ -5,7 +5,7 @@ from typing import TYPE_CHECKING
 from endstone.event import PlayerJoinEvent, event_handler
 
 if TYPE_CHECKING:
-    from jwmarket.main import JWMarket
+    from endstone_jwmarket.main import JWMarket
 
 
 class MarketPlayerListener:

@@ -12,23 +12,14 @@ from endstone.command import Command, CommandSender
 
 from jweconomy.api.economy_api import EconomyAPI
 
-from jwmarket.cache.listing_cache import ListingCache
-from jwmarket.cache.search_cache import SearchCache
-from jwmarket.commands.ah_command import AuctionHouseCommandHandler
-from jwmarket.commands.orders_command import OrdersCommandHandler
-from jwmarket.database.database_manager import DatabaseManager
-from jwmarket.database.repositories.auction_repository import AuctionRepository
-from jwmarket.database.repositories.claims_repository import ClaimsRepository
-from jwmarket.database.repositories.order_repository import OrderRepository
-from jwmarket.database.schema import SchemaManager
-from jwmarket.gui.gui_manager import GuiManager
-from jwmarket.listeners.player_listener import MarketPlayerListener
-from jwmarket.services.auction_service import AuctionService
-from jwmarket.services.order_service import OrderService
-from jwmarket.services.search_service import SearchService
-from jwmarket.util.config_loader import ConfigLoader
-from jwmarket.util.item_serializer import ItemSerializer
-from jwmarket.util.message_formatter import MessageFormatter
+from endstone_jwmarket.cache import ListingCache, SearchCache
+from endstone_jwmarket.commands import AuctionHouseCommandHandler, OrdersCommandHandler
+from endstone_jwmarket.database import DatabaseManager, SchemaManager
+from endstone_jwmarket.database.repositories import AuctionRepository, ClaimsRepository, OrderRepository
+from endstone_jwmarket.gui import GuiManager
+from endstone_jwmarket.listeners import MarketPlayerListener
+from endstone_jwmarket.services import AuctionService, OrderService, SearchService
+from endstone_jwmarket.util import ConfigLoader, ItemSerializer, MessageFormatter
 
 if TYPE_CHECKING:
     from concurrent.futures import Future

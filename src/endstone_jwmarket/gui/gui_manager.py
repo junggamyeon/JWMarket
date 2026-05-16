@@ -4,11 +4,11 @@ from typing import TYPE_CHECKING
 import json
 
 from endstone import Player
-from endstone.form import ActionForm, ModalForm, Dropdown, TextInput, Label
+from endstone.form import ActionForm, ModalForm, TextInput
 from endstone.inventory import ItemStack
 
 if TYPE_CHECKING:
-    from jwmarket.main import JWMarket
+    from endstone_jwmarket.main import JWMarket
 
 
 class GuiManager:

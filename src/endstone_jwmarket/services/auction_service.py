@@ -8,10 +8,9 @@ from typing import TYPE_CHECKING, Any
 if TYPE_CHECKING:
     from endstone import Logger
     from jweconomy.api.economy_api import EconomyAPI
-    from jwmarket.database.repositories.auction_repository import AuctionRepository, AuctionRecord
-    from jwmarket.database.repositories.claims_repository import ClaimsRepository
-    from jwmarket.cache.listing_cache import ListingCache
-    from jwmarket.util.item_serializer import ItemSerializer
+    from endstone_jwmarket.database.repositories import AuctionRepository, ClaimsRepository
+    from endstone_jwmarket.cache import ListingCache
+    from endstone_jwmarket.util import ItemSerializer
 
 
 @dataclass(frozen=True, slots=True)
