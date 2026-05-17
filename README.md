@@ -1,91 +1,100 @@
-# JWMarket
+# 🛒 JWMarket
 
-JWMarket is an advanced, fully-featured **Auction House and Black Market** plugin for Minecraft Bedrock (Endstone API). It relies on [JWEconomy](https://github.com/junggamyeon/JWEconomy) to handle transactions, providing a safe, automated, and highly interactive player-driven economy.
+**JWMarket** is an advanced, fully-featured **Auction House and Black Market** plugin for Minecraft Bedrock, built on the [Endstone API](https://endstone.dev). It provides a safe, automated, and highly interactive player-driven economy with a seamless user experience.
 
-What makes JWMarket stand out is its **native UI Forms**, **Buy Orders Escrow system**, and **Perfect NBT Serialization**, allowing players to trade heavily enchanted, named, and modified items without fear of data loss.
+![Version](https://img.shields.io/badge/version-1.0.2-blue.svg)
+![API](https://img.shields.io/badge/API-Endstone-green.svg)
+![License](https://img.shields.io/badge/license-MIT-orange.svg)
+
+---
 
 ## 🌟 Key Features
 
-- **Interactive Native GUI:** Forget chat-based commands! JWMarket uses beautiful, native Bedrock UI forms for browsing, searching, listing, and buying items.
-- **Sell Listings (Auction House):** Players can hold an item and list it on the market for a specified price. Other players can browse the GUI and purchase it instantly.
-- **Buy Orders (Escrow System):** A revolutionary feature. Players can place a "Buy Order" for an item they *want*. The money is immediately taken from their account and held in **escrow**. Other players can then fulfill this order by bringing the requested items, instantly receiving the escrowed money.
-- **100% NBT Preservation:** JWMarket uses a custom JSON serializer. When an item is listed, all its data—Enchantments, Custom Names, Lore, Durability, and exact Item States—are perfectly serialized into the database and completely restored when purchased or reclaimed.
-- **Offline Delivery & Reclaim System:** If a player buys your item while you are offline, or if your listing expires, the items/money are kept completely safe. Players can use the "Expired / Reclaim" menu to safely retrieve their items.
-- **Categorization & Search Engine:** Items are grouped into configurable categories (Blocks, Tools, Misc, etc.). The GUI also features a live search function to find exact item matches.
-- **Listing Tax System:** Server owners can configure a tax percentage applied when players list items, helping to prevent market spam and control inflation.
-- **Full Localization:** Every GUI Title, Button text, and chat message is 100% configurable in the `messages.yml` file, supporting full translation into any language.
-
----
-
-## 📥 Dependencies
-- [JWEconomy](https://github.com/junggamyeon/JWEconomy)
-- [endstone-inventoryui](https://github.com/junggamyeon/endstone-inventoryui)
-
----
-
-## 🛠️ Commands & Permissions
-
-| Command | Permission Node | Description |
-|---|---|---|
-| `/ah` | `jwmarket.command.ah` | Opens the main Black Market GUI. |
-| `/ah sell <price> [amount]` | `jwmarket.command.ah` | Lists the item currently held in your main hand on the market. |
-| `/ah search <keyword>` | `jwmarket.command.ah` | Quickly searches the market and opens a GUI with the results. |
-| `/ah expired` | `jwmarket.command.ah` | Opens the GUI to view and reclaim expired, cancelled, or safely-stored items. |
-| `/ah reload` | `jwmarket.command.ah.reload` | **(Admin)** Reloads `config.yml`, `categories.yml`, and `messages.yml`. |
-| `/orders` | `jwmarket.command.ah` | Opens the Buy Orders GUI to browse requests or create a new order. |
+*   **🎨 Native Bedrock GUI:** Forget complex chat commands. JWMarket uses beautiful, native UI forms for browsing, searching, and managing listings.
+*   **📦 Auction House (Selling):** List any item in your hand instantly. Full support for custom names, enchantments, and lore.
+*   **📈 Buy Orders (Escrow System):** A revolutionary system where players can request items. The money is held in **escrow** and paid out instantly when the order is fulfilled.
+*   **🛡️ 100% NBT Preservation:** Every detail—enchantments, custom lore, durability, and item states—is perfectly serialized and restored.
+*   **🏠 Offline Delivery & Reclaim:** Sold items or expired listings are managed through a secure "Expired / Reclaim" menu, ensuring no data loss even when players are offline.
+*   **🔍 Smart Search & Categories:** Items are automatically grouped into configurable categories (Blocks, Tools, Combat, etc.) with a live search engine.
+*   **💰 Dynamic Tax System:** Prevent market spam and control inflation with configurable listing and order taxes.
+*   **🌐 Full Localization:** Every string, button, and menu title is 100% configurable in `messages.yml`.
 
 ---
 
 ## ⚙️ How the Systems Work
 
 ### The Auction House (Selling)
-1. A player holds a Diamond Sword with Sharpness V in their hand.
-2. They type `/ah sell 5000`.
-3. The item is removed from their hand, serialized to JSON (saving the Sharpness V), and placed in the SQLite database.
-4. Player B opens `/ah`, browses to "Tools & Weapons", sees the sword, and clicks "Buy".
-5. Player B pays 5000 coins (handled via JWEconomy). The 5000 coins are transferred to Player A, and Player B receives the exact Sharpness V sword.
+1. **List:** A player holds a Sharpness V Diamond Sword and types `/ah sell 5000`.
+2. **Store:** The item is removed and serialized into the SQLite database, preserving all NBT data.
+3. **Buy:** Player B finds the sword in the "Tools & Weapons" category and clicks **Buy**.
+4. **Complete:** Player B pays the 5000 coins (via JWEconomy). Player A receives the funds, and Player B gets the exact Sharpness V sword.
 
 ### Buy Orders (Escrow)
-1. Player A needs 64 Diamonds but nobody is selling them.
-2. Player A uses the GUI to create a Buy Order for `minecraft:diamond`, quantity `64`, price `100` each.
-3. Total cost is `6400`. The server immediately deducts `6400` from Player A and holds it in the "Escrow" database.
-4. Player B mines 64 Diamonds, opens `/orders`, clicks Player A's order, and clicks "Fulfill".
-5. Player B's diamonds are taken, and Player B immediately receives the `6400` coins from escrow. The diamonds are placed into Player A's offline storage (reclaim menu).
+1. **Order:** Player A needs 64 Diamonds and creates a Buy Order for 100 coins each.
+2. **Escrow:** 6400 coins are immediately deducted from Player A and held in secure escrow.
+3. **Fulfill:** Player B sees the order, brings 64 Diamonds, and clicks **Fulfill**.
+4. **Swap:** Player B gets the 6400 coins instantly. The Diamonds are moved to Player A's reclaim menu.
 
 ---
 
-## 📝 Configuration Files
+## 🛠️ Installation & Dependencies
 
-JWMarket generates three highly customizable files in its data folder:
+### Dependencies
+*   **[JWEconomy](https://github.com/junggamyeon/JWEconomy)** (Required) - Handles all financial transactions.
+*   **[endstone-inventoryui](https://github.com/junggamyeon/endstone-inventoryui)** (Recommended) - For enhanced UI interactions.
 
-### 1. `config.yml`
-Controls the core mechanics of the market.
+### Setup
+1. Download the latest `endstone-jwmarket` package.
+2. Place it in your server's `plugins` folder.
+3. Ensure **JWEconomy** is also installed and enabled.
+4. Restart your server to generate the configuration files.
+
+---
+
+## 📜 Commands & Permissions
+
+| Command | Permission | Description |
+|:---|:---|:---|
+| `/ah` | `jwmarket.command.ah` | Opens the main Auction House GUI. |
+| `/ah sell <price>` | `jwmarket.command.ah` | Lists the held item for the specified price. |
+| `/ah search <query>` | `jwmarket.command.ah` | Searches the market for a specific keyword. |
+| `/ah expired` | `jwmarket.command.ah` | View and reclaim expired or cancelled items. |
+| `/ah reload` | `jwmarket.command.ah.reload` | **(Admin)** Reloads all configuration files. |
+| `/orders` | `jwmarket.command.ah` | Opens the Buy Orders / Global Market GUI. |
+
+---
+
+## 📝 Configuration
+
+JWMarket generates three highly customizable files:
+
+### `config.yml`
+Adjust tax rates, listing limits, and item blacklists.
 ```yaml
 market:
-  listing_tax_percent: 5.0 # Tax charged to LIST an item.
-  order_tax_percent: 2.0 # Tax charged to CREATE a buy order.
-  max_active_listings: 15 # Max items a player can sell at once.
-  max_active_orders: 5 # Max buy orders a player can have at once.
-  default_listing_duration_hours: 48 # How long until an item expires.
-  default_order_duration_hours: 72 # How long until a buy order expires.
-  min_listing_price: 1.0 # Minimum price for any listing/order.
-  max_listing_price: 1000000000.0 # Maximum allowed price.
-  disabled_items: # Items completely banned from the market.
+  listing_tax_percent: 5.0    # Tax charged to list an item.
+  max_active_listings: 15     # Max items per player.
+  disabled_items:             # Banned items.
     - "minecraft:bedrock"
-    - "minecraft:barrier"
 ```
 
-### 2. `categories.yml`
-Controls the categories shown in the Main Menu GUI. You can add your own categories, set the display name, choose an icon, and define which `minecraft:id` items belong inside it.
+### `categories.yml`
+Define how items are grouped in the GUI.
 ```yaml
 blocks:
   display_name: "Blocks"
   icon: "textures/blocks/grass_side_carried"
-  items:
-    - "minecraft:dirt"
-    - "minecraft:stone"
-    - "minecraft:cobblestone"
+  items: ["minecraft:dirt", "minecraft:stone"]
 ```
 
-### 3. `messages.yml`
-Contains every single string of text used in the plugin. If you want to change the language to Vietnamese, Spanish, etc., or just change the color codes of the UI, do it here!
+### `messages.yml`
+Translate the entire plugin into any language and customize the color scheme.
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License**.
+
+---
+*Developed with ❤️ by JWDev*
