@@ -1,0 +1,2 @@
+[endstone]
+jwmarket = jwmarket.main:JWMarket
