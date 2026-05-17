@@ -43,12 +43,6 @@
 *   **[JWEconomy](https://github.com/junggamyeon/JWEconomy)** (Required) - Handles all financial transactions.
 *   **[endstone-inventoryui](https://github.com/junggamyeon/endstone-inventoryui)** (Recommended) - For enhanced UI interactions.
 
-### Setup
-1. Download the latest `endstone-jwmarket` package.
-2. Place it in your server's `plugins` folder.
-3. Ensure **JWEconomy** is also installed and enabled.
-4. Restart your server to generate the configuration files.
-
 ---
 
 ## 📜 Commands & Permissions
@@ -95,6 +89,3 @@ Translate the entire plugin into any language and customize the color scheme.
 ## 📄 License
 
 This project is licensed under the **MIT License**.
-
----
-*Developed with ❤️ by JWDev*
