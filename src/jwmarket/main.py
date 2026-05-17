@@ -39,7 +39,7 @@ class JWMarket(Plugin):
 
     api_version = "0.11"
     prefix = "§d§l[JWMarket]§r"
-    version = "1.0.0"
+    version = "1.0.2"
     description = "Modern auction house and market system with SQLite backend."
     authors = ["JWDev"]
     depend = ["jweconomy"]
