@@ -17,6 +17,12 @@ What makes JWMarket stand out is its **native UI Forms**, **Buy Orders Escrow sy
 
 ---
 
+## 📥 Dependencies
+- [JWEconomy](https://github.com/junggamyeon/JWEconomy)
+- [endstone-inventoryui](https://github.com/junggamyeon/endstone-inventoryui)
+
+---
+
 ## 🛠️ Commands & Permissions
 
 | Command | Permission Node | Description |
@@ -83,9 +89,3 @@ blocks:
 
 ### 3. `messages.yml`
 Contains every single string of text used in the plugin. If you want to change the language to Vietnamese, Spanish, etc., or just change the color codes of the UI, do it here!
-
----
-
-## 📥 Dependencies
-- **Endstone API:** The core bedrock server API.
-- **JWEconomy:** Required to handle currency transactions. Ensure JWEconomy is loaded before JWMarket.
